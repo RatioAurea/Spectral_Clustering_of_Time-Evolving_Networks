@@ -2,7 +2,7 @@
 
 Code for **“Spectral Clustering of Time-Evolving Networks Using Spatio-Temporal Random Walks”** by F. Blaskovic, T. Conrad, S. Klus, and N. Djurdjevac Conrad.
 
-The notebook `spatio_temporal_spectral_clustering.ipynb` implements Algorithm 1 and the singular-vector diagnostics in Appendix D. It loads the included examples or any user dataset stored as numerically named, square adjacency matrices (`adj_0.csv`, `adj_1.npy`, `adj_2.npz`, …). Dense CSV/NPY/NPZ and SciPy sparse NPZ matrices are supported and may be mixed. The optional ground truth must be an `(snapshots, nodes)` array named `*_ground_truth.npy` or `*_ground_truth.csv` in the parent directory.
+The notebook `spatio_temporal_spectral_clustering.ipynb` implements Algorithm 1 and the diagnostics in Appendix D. It loads the included examples or any user dataset stored as numerically named, square adjacency matrices (`adj_0.csv`, `adj_1.npy`, `adj_2.npz`, …). Dense CSV/NPY/NPZ and SciPy sparse NPZ matrices are supported and may be mixed. The optional ground truth must be an `(snapshots, nodes)` array named `*_ground_truth.npy` or `*_ground_truth.csv` in the parent directory.
 
 ## Run
 
@@ -29,18 +29,6 @@ leave `CUSTOM_BASES = None` for dominant eigenvectors, or supply a list of
 basis arrays to use custom bases. Python calls may also explicitly select
 `basis_method='exact'` or `'custom'`.
 `CUSTOM_BASES` accepts one real basis array per snapshot. 
-
-The helper `reduced_spatiotemporal_clustering.py` projects exact transition
-products onto these bases, removes temporal coordinates, solves the symmetric
-reduced eigenproblem, and lifts modes to node observables before clustering.
-Initial distributions must be finite, nonnegative, and have positive total mass.
-A probability floor of 1e-15 is applied before renormalizing the initial and
-propagated distributions to avoid division by zero. When active, this is a
-numerical regularization of the paper’s exact propagation equation. No full space-time matrix is
-constructed, but the reduced spatial matrix is dense. Increase the basis size
-to assess convergence; a basis dimension of N recovers the full search space.
-Set `COMPARE_WITH_FULL = True` for an optional eigenvalue comparison. The
-existing dependencies suffice for both notebooks.
 
 `ROW_NORMALIZE_EMBEDDING` controls preprocessing immediately before k-means:
 
