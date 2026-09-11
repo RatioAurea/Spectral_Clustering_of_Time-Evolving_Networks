@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local environments and notebook state
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Editor and operating-system metadata
+.DS_Store
+.idea/
+.vscode/
+
+# Optional local outputs produced by the notebook
+*_predicted_labels.npy
+*_predicted_labels.csv
